@@ -1,0 +1,4 @@
+name = CURD
+description = This module provide the feature CREATE,UPDATE and DELETE
+core = 7.x 
+version = 7.5.1

@@ -1,0 +1,73 @@
+1. How to add a new field to user account? How to validate the same?
+Answer: There are following steps to add new filed in user account or registration page:- 
+1. Go to administrator section and click Configuration tab link
+2. In configuration under people section click on account setting link 
+3. In account setting click on manage fields tab and add new field for the validation select field as required
+
+using the following steps we can add new filed in user account. 
+
+Note: Make sure core module field UI enabled(required module field,field SQL storage)
+
+2. Which database engine used by Drupal?
+Answer: InnoDB 
+Change the default engine update my.cnf file
+#set innodb as default
+default-storage-engine=InnoDB
+# Change engine any table click operation table and select desired engine
+
+3. What is the difference between InnoDB and MyISAM?
+Answer: 
+ a. InnoDB DML operation follows the ACID model,transaction,commit,roll-back,crash-recovery 
+ b. InnoDB have row label locking
+ c. InnoDB tables arrange your data on disk to optimize queries based on primary keys.
+    Each InnoDB table has a primary key index called the clustered index that organizes the data to minimize I/O for primary key lookups
+ d. To maintain data integrity, InnoDB supports FOREIGN KEY constraints. With foreign keys, inserts, updates, 
+  and deletes are checked to ensure they do not result in inconsistencies across different tables.
+  MyISAM have table label locking, Full text search supports
+  Full-text indexes can be created only for VARCHAR, CHAR or TEXT columns.
+  
+4. Difference between UNIQUE and PRIMARY key?   
+Answer: Primary key is a key which is uniquely identifies each row/record in the table.  
+        Unique key constraint enforces the uniqueness on the column in which its defined. 
+        Unique key will make sure only unique values are  allowed in which columns which is defined. 
+   Primary key not allow null value when unique key allow only one null value.
+   A table can have one primary key when A table can have multiple unique keys.
+   By default primary key create unique clustered index on the table and unique key create non-clustered index on the table.  
+
+5. How to use ORDER BY and GROUP BY in database?  
+Answer:  The ORDER By and GROUP BY clauses are used to organised data. 
+         The ORDER BY purpose to sort the query results by by specific columns ascending or descending order 
+		 The GROUP BY clause’s purpose is summarize unique combinations of columns values.
+	select title, count(*) AS Number
+    from employee
+    GROUP BY title 
+    ORDER BY Number;
+6. How to add JavaScript and CSS to Drupal?	
+Answer: Using Drupal API  drupal_add_css() and drupal_add_js() for module
+        drupal_add_js(drupal_get_path('module', 'mymodule') . '/mymodule.js');
+		To add JS (or CSS) file from form builder function the recommended way is to use Form API #attached property as below,
+		$form['#attached']['js'] = array(
+        drupal_get_path('module', 'ajax_example') . '/ajax_example.js',
+       );
+	Using the theme's .info file
+	name = My theme
+    description = Theme developed by me.
+    core = 7.x
+    engine = phptemplate
+    scripts[] = mytheme.js
+	stylesheets[all][] = css/layout.css
+    stylesheets[all][] = css/style.css
+    stylesheets[all][] = css/colors.css
+    stylesheets[print][] = css/print.css
+	
+7. How to create a branch in Git?	
+    install Git software 
+	run command git init in a folder
+	Add code in git repository git add -A
+    Commit code git commit -m "intial commit"	
+	Show all branch command git branch
+	create branch command git branch branch name
+	switch branch 
+	git checkout branch name "git checkout dtest" 
+	
+	
